@@ -20,7 +20,7 @@ def get_links(url, parent_url, file_location):
   soup = BeautifulSoup(html, 'html.parser')
   for link in soup.find_all('a', limit=1):
 
-#    What is this 'if' block for?
+# What is this 'if' block for?
 #    if(link.text == '../'):
 #     continue
   
@@ -29,7 +29,6 @@ def get_links(url, parent_url, file_location):
 
 #  What is the purpose of calling get_links again? Right now the below lines will 
 #  infinitely loop.
-
 #    if(link_name.endswith('/')):
 #     get_links(link_name, url, location_name) #call again over the gathered links
 #    else:
@@ -43,7 +42,7 @@ def get_links(url, parent_url, file_location):
 
 def download(url, location):
  command = 'wget ' + url + ' -P ' + location
- # os.system(command)
+ os.system(command)
 
 
 print('Enter the base url that you want to scrape')
@@ -55,9 +54,6 @@ location = input()
 get_links(url, url, location) #get all the links from the base url
 
 print('All links crawled, starting download now')
-# print(download_queue)
-# for i in range(len(download_queue)):
-#  print(download_queue[i][0] + '\t' + download_queue[i][1])
 
 for i in range(len(download_queue)):
  download(download_queue[i][0], download_queue[i][1])
