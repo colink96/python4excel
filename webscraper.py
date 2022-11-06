@@ -18,7 +18,7 @@ def get_links(url, parent_url, file_location):
   html = urlopen(req).read()
 
   soup = BeautifulSoup(html, 'html.parser')
-  for link in soup.find_all('a', limit=1):
+  for link in soup.find_all('a'):
 
 # What is this 'if' block for?
 #    if(link.text == '../'):
